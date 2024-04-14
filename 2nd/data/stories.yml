@@ -1,0 +1,347 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: unanswerable qsts path
+  steps:
+  - intent: unanswerable_question
+  - action: utter_unanswerable_question_answer
+
+- story: nlp qsts path
+  steps:
+  - intent: nlp_definition
+  - action: utter_nlp_definition
+
+- story: ce cycle modules path 1
+  steps:
+  - intent: computer_engineering_cycle_modules
+  - action: utter_computer_engineering_cycle_modules
+  - action: utter_interested_registration
+  - intent: affirm
+  - action: utter_interested_registration_affirm
+
+- story: ce cycle modules path 2
+  steps:
+  - intent: computer_engineering_cycle_modules
+  - action: utter_computer_engineering_cycle_modules
+  - action: utter_interested_registration
+  - intent: deny
+  - action: utter_interested_registration_deny
+
+- story: cs complex systems modules path 1
+  steps:
+  - intent: computer_engineering_cycle_modules
+  - action: utter_computer_engineering_cycle_modules
+  - action: utter_interested_registration
+  - intent: affirm
+  - action: utter_interested_registration_affirm
+
+- story: cs complex systems modules path 2
+  steps:
+  - intent: computer_science_engineering_complex_systems_modules
+  - action: utter_computer_science_engineering_complex_systems_modules
+  - action: utter_interested_registration
+  - intent: deny
+  - action: utter_interested_registration_deny
+
+- story: machine_learning_definition_story
+  steps:
+  - intent: machine_learning_definition
+  - action: utter_machine_learning_definition
+
+- story: deep_learning_definition_story
+  steps:
+  - intent: deep_learning_definition
+  - action: utter_deep_learning_definition
+
+- story: neural_network_definition_story
+  steps:
+  - intent: neural_network_definition
+  - action: utter_neural_network_definition
+
+- story: ai_definition_story
+  steps:
+  - intent: ai_definition
+  - action: utter_ai_definition
+
+- story: gpt_definition_story
+  steps:
+  - intent: gpt_definition
+  - action: utter_gpt_definition
+
+- story: first_law_of_thermodynamics_story
+  steps:
+  - intent: first_law_of_thermodynamics
+  - action: utter_first_law_of_thermodynamics
+
+- story: conductors_vs_insulators_in_heat_transfer_story
+  steps:
+  - intent: conductors_vs_insulators_in_heat_transfer
+  - action: utter_conductors_vs_insulators_in_heat_transfer
+
+- story: second_law_of_thermodynamics_story
+  steps:
+  - intent: second_law_of_thermodynamics
+  - action: utter_second_law_of_thermodynamics
+
+- story: neural_network_definition_story
+  steps:
+  - intent: neural_network_definition
+  - action: utter_neural_network_definition
+
+- story: ai_definition_story
+  steps:
+  - intent: ai_definition
+  - action: utter_ai_definition
+
+- story: underfitting_definition_story
+  steps:
+  - intent: underfitting_definition
+  - action: utter_underfitting_definition
+
+- story: overfitting_definition_story
+  steps:
+  - intent: overfitting_definition
+  - action: utter_overfitting_definition
+
+- story: supervised_learning_definition_story
+  steps:
+  - intent: supervised_learning_definition
+  - action: utter_supervised_learning_definition
+
+- story: unsupervised_learning_definition_story
+  steps:
+  - intent: unsupervised_learning_definition
+  - action: utter_unsupervised_learning_definition
+
+- story: reinforcement_learning_definition_story
+  steps:
+  - intent: reinforcement_learning_definition
+  - action: utter_reinforcement_learning_definition
+
+- story: image_data_augmentation_story
+  steps:
+  - intent: image_data_augmentation
+  - action: utter_image_data_augmentation
+
+- story: tensorflow_definition_story
+  steps:
+  - intent: tensorflow_definition
+  - action: utter_tensorflow_definition
+
+- story: pytorch_definition_story
+  steps:
+  - intent: pytorch_definition
+  - action: utter_pytorch_definition
+
+- story: spacy_definition_story
+  steps:
+  - intent: spacy_definition
+  - action: utter_spacy_definition
+
+- story: chatbot_building_steps_story
+  steps:
+  - intent: chatbot_building_steps
+  - action: utter_chatbot_building_steps
+
+- story: data_collection_steps_story
+  steps:
+  - intent: data_collection_steps
+  - action: utter_data_collection_steps
+
+- story: classification_project_steps_story
+  steps:
+  - intent: classification_project_steps
+  - action: utter_classification_project_steps
+
+- story: regression_project_steps_story
+  steps:
+  - intent: regression_project_steps
+  - action: utter_regression_project_steps
+
+- story: web_development_steps_story
+  steps:
+  - intent: web_development_steps
+  - action: utter_web_development_steps
+
+- story: data_analyst_steps_story
+  steps:
+  - intent: data_analyst_steps
+  - action: utter_data_analyst_steps
+
+- story: software_engineer_steps_story
+  steps:
+  - intent: software_engineer_steps
+  - action: utter_software_engineer_steps
+
+- story: business_intelligence_engineer_steps_story
+  steps:
+  - intent: business_intelligence_engineer_steps
+  - action: utter_business_intelligence_engineer_steps
+
+- story: full_stack_developer_steps_story
+  steps:
+  - intent: full_stack_developer_steps
+  - action: utter_full_stack_developer_steps
+
+- story: front_end_developer_steps_story
+  steps:
+  - intent: front_end_developer_steps
+  - action: utter_front_end_developer_steps
+
+- story: back_end_developer_steps_story
+  steps:
+  - intent: back_end_developer_steps
+  - action: utter_back_end_developer_steps
+
+- story: blockchain_learning_steps_story
+  steps:
+  - intent: blockchain_learning_steps
+  - action: utter_blockchain_learning_steps
+
+- story: blockchain_definition_story
+  steps:
+  - intent: blockchain_definition
+  - action: utter_blockchain_definition
+
+- story: iot_definition_story
+  steps:
+  - intent: iot_definition
+  - action: utter_iot_definition
+
+- story: crypto_definition_story
+  steps:
+  - intent: crypto_definition
+  - action: utter_crypto_definition
+
+- story: nft_definition_story
+  steps:
+  - intent: nft_definition
+  - action: utter_nft_definition
+
+- story: cybersecurity_basics_story
+  steps:
+  - intent: cybersecurity_basics
+  - action: utter_cybersecurity_basics
+
+- story: big_data_story
+  steps:
+  - intent: big_data
+  - action: utter_big_data
+
+- story: ionic_vs_covalent_bond_story
+  steps:
+  - intent: ionic_vs_covalent_bond
+  - action: utter_ionic_vs_covalent_bond
+
+- story: scalar_vs_vector_quantities_story
+  steps:
+  - intent: scalar_vs_vector_quantities
+  - action: utter_scalar_vs_vector_quantities
+
+- story: newtons_first_law_of_motion_story
+  steps:
+  - intent: newtons_first_law_of_motion
+  - action: utter_newtons_first_law_of_motion
+
+- story: newtons_second_law_of_motion_story
+  steps:
+  - intent: newtons_second_law_of_motion
+  - action: utter_newtons_second_law_of_motion
+
+- story: newtons_third_law_of_motion_story
+  steps:
+  - intent: newtons_third_law_of_motion
+  - action: utter_newtons_third_law_of_motion
+
+- story: kinetic_vs_potential_energy_story
+  steps:
+  - intent: kinetic_vs_potential_energy
+  - action: utter_kinetic_vs_potential_energy
+
+- story: conservation_of_energy_in_mechanical_systems_story
+  steps:
+  - intent: conservation_of_energy_in_mechanical_systems
+  - action: utter_conservation_of_energy_in_mechanical_systems
+
+- story: static_vs_kinetic_friction_story
+  steps:
+  - intent: static_vs_kinetic_friction
+  - action: utter_static_vs_kinetic_friction
+
+- story: gravity_and_free_fall_story
+  steps:
+  - intent: gravity_and_free_fall
+  - action: utter_gravity_and_free_fall
+
+- story: elastic_vs_inelastic_collisions_story
+  steps:
+  - intent: elastic_vs_inelastic_collisions
+  - action: utter_elastic_vs_inelastic_collisions
+
+- story: conservation_of_momentum_in_collisions_story
+  steps:
+  - intent: conservation_of_momentum_in_collisions
+  - action: utter_conservation_of_momentum_in_collisions
+
+- story: heat_vs_temperature_story
+  steps:
+  - intent: heat_vs_temperature
+  - action: utter_heat_vs_temperature
+
+- story: nuclear_fission_vs_nuclear_fusion_story
+  steps:
+  - intent: nuclear_fission_vs_nuclear_fusion
+  - action: utter_nuclear_fission_vs_nuclear_fusion
+
+- story: lost_in_thought_story
+  steps:
+  - intent: lost_in_thought
+  - action: utter_lost_in_thought
+
+- story: lost_in_thought_questions_story
+  steps:
+  - intent: lost_in_thought_questions
+  - action: utter_lost_in_thought_questions
+
+- story: dreamland_escapade_story
+  steps:
+  - intent: dreamland_escapade
+  - action: utter_dreamland_escapade
+
+- story: dreamland_escapade_questions_story
+  steps:
+  - intent: dreamland_escapade_questions
+  - action: utter_dreamland_escapade_questions
+
+- story: covalent_bonding_story
+  steps:
+  - intent: covalent_bonding
+  - action: utter_covalent_bonding

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=utter_computer_engineering_cycle_modules];
+2 [class="", fontsize=12, label=utter_interested_registration];
+3 [class="", fontsize=12, label=utter_interested_registration_affirm];
+4 [class="", fontsize=12, label=utter_computer_science_engineering_complex_systems_modules];
+5 [class="", fontsize=12, label=utter_interested_registration];
+6 [class="", fontsize=12, label=utter_interested_registration_deny];
+7 [class="", fontsize=12, label=utter_machine_learning_definition];
+8 [class="", fontsize=12, label=utter_deep_learning_definition];
+9 [class="", fontsize=12, label=utter_neural_network_definition];
+10 [class="", fontsize=12, label=utter_ai_definition];
+11 [class="", fontsize=12, label=utter_gpt_definition];
+12 [class="", fontsize=12, label=utter_first_law_of_thermodynamics];
+13 [class="", fontsize=12, label=utter_conductors_vs_insulators_in_heat_transfer];
+14 [class="", fontsize=12, label=utter_second_law_of_thermodynamics];
+15 [class="", fontsize=12, label=utter_underfitting_definition];
+16 [class="", fontsize=12, label=utter_overfitting_definition];
+17 [class="", fontsize=12, label=utter_supervised_learning_definition];
+18 [class="", fontsize=12, label=utter_unsupervised_learning_definition];
+19 [class="", fontsize=12, label=utter_reinforcement_learning_definition];
+20 [class="", fontsize=12, label=utter_image_data_augmentation];
+21 [class="", fontsize=12, label=utter_tensorflow_definition];
+22 [class="", fontsize=12, label=utter_pytorch_definition];
+23 [class="", fontsize=12, label=utter_spacy_definition];
+24 [class="", fontsize=12, label=utter_chatbot_building_steps];
+25 [class="", fontsize=12, label=utter_data_collection_steps];
+26 [class="", fontsize=12, label=utter_classification_project_steps];
+27 [class="", fontsize=12, label=utter_regression_project_steps];
+28 [class="", fontsize=12, label=utter_web_development_steps];
+29 [class="", fontsize=12, label=utter_data_analyst_steps];
+30 [class="", fontsize=12, label=utter_software_engineer_steps];
+31 [class="", fontsize=12, label=utter_business_intelligence_engineer_steps];
+32 [class="", fontsize=12, label=utter_full_stack_developer_steps];
+33 [class="", fontsize=12, label=utter_greet];
+34 [class="", fontsize=12, label=utter_happy];
+35 [class="", fontsize=12, label=utter_front_end_developer_steps];
+36 [class="", fontsize=12, label=utter_back_end_developer_steps];
+37 [class="", fontsize=12, label=utter_blockchain_learning_steps];
+38 [class="", fontsize=12, label=utter_blockchain_definition];
+39 [class="", fontsize=12, label=utter_iot_definition];
+40 [class="", fontsize=12, label=utter_crypto_definition];
+41 [class="", fontsize=12, label=utter_nft_definition];
+42 [class="", fontsize=12, label=utter_cybersecurity_basics];
+43 [class="", fontsize=12, label=utter_big_data];
+44 [class="", fontsize=12, label=utter_ionic_vs_covalent_bond];
+46 [class="", fontsize=12, label=utter_cheer_up];
+47 [class="", fontsize=12, label=utter_did_that_help];
+49 [class="", fontsize=12, label=utter_scalar_vs_vector_quantities];
+50 [class="", fontsize=12, label=utter_newtons_first_law_of_motion];
+51 [class="", fontsize=12, label=utter_newtons_second_law_of_motion];
+52 [class="", fontsize=12, label=utter_newtons_third_law_of_motion];
+53 [class="", fontsize=12, label=utter_kinetic_vs_potential_energy];
+54 [class="", fontsize=12, label=utter_conservation_of_energy_in_mechanical_systems];
+55 [class="", fontsize=12, label=utter_static_vs_kinetic_friction];
+56 [class="", fontsize=12, label=utter_gravity_and_free_fall];
+57 [class="", fontsize=12, label=utter_elastic_vs_inelastic_collisions];
+58 [class="", fontsize=12, label=utter_conservation_of_momentum_in_collisions];
+62 [class="", fontsize=12, label=utter_goodbye];
+63 [class="", fontsize=12, label=utter_heat_vs_temperature];
+64 [class="", fontsize=12, label=utter_nuclear_fission_vs_nuclear_fusion];
+65 [class="", fontsize=12, label=utter_lost_in_thought];
+66 [class="", fontsize=12, label=utter_lost_in_thought_questions];
+67 [class="", fontsize=12, label=utter_dreamland_escapade];
+68 [class="", fontsize=12, label=utter_dreamland_escapade_questions];
+69 [class="", fontsize=12, label=utter_covalent_bonding];
+70 [class="", fontsize=12, label=utter_unanswerable_question_answer];
+71 [class="", fontsize=12, label=utter_nlp_definition];
+75 [class="", fontsize=12, label="..."];
+78 [class="", fontsize=12, label=utter_iamabot];
+79 [class=intent, fillcolor=lightblue, label="List the courses offered in Computer Engineering Cycle at FSTE", shape=rect, style=filled];
+80 [class=intent, fillcolor=lightblue, label="Can you provide information about the modules of Computer Science and Engineering of Complex Systems?", shape=rect, style=filled];
+81 [class=intent, fillcolor=lightblue, label="What does machine learning stand for?", shape=rect, style=filled];
+82 [class=intent, fillcolor=lightblue, label="Define deep learning", shape=rect, style=filled];
+83 [class=intent, fillcolor=lightblue, label="Define neural network", shape=rect, style=filled];
+84 [class=intent, fillcolor=lightblue, label="Tell me more about artificial intelligence", shape=rect, style=filled];
+85 [class=intent, fillcolor=lightblue, label="How would you define GPT?", shape=rect, style=filled];
+86 [class=intent, fillcolor=lightblue, label="What is the connection between the first law of thermodynamics and energy conservation?", shape=rect, style=filled];
+87 [class=intent, fillcolor=lightblue, label="What is the difference between conductors and insulators in terms of heat transfer?", shape=rect, style=filled];
+88 [class=intent, fillcolor=lightblue, label="How does the second law of thermodynamics define the direction of heat flow?", shape=rect, style=filled];
+89 [class=intent, fillcolor=lightblue, label="What do you understand by underfitting?", shape=rect, style=filled];
+90 [class=intent, fillcolor=lightblue, label="What's the meaning of overfitting?", shape=rect, style=filled];
+91 [class=intent, fillcolor=lightblue, label="Can you give me a brief explanation of supervised learning?", shape=rect, style=filled];
+92 [class=intent, fillcolor=lightblue, label="What do you understand by unsupervised learning?", shape=rect, style=filled];
+93 [class=intent, fillcolor=lightblue, label="How would you define reinforcement learning?", shape=rect, style=filled];
+94 [class=intent, fillcolor=lightblue, label="What exactly is image data augmentation?", shape=rect, style=filled];
+95 [class=intent, fillcolor=lightblue, label="Can you give me a brief explanation of TensorFlow?", shape=rect, style=filled];
+96 [class=intent, fillcolor=lightblue, label="Could you provide an overview of PyTorch?", shape=rect, style=filled];
+97 [class=intent, fillcolor=lightblue, label="Tell me more about spaCy", shape=rect, style=filled];
+98 [class=intent, fillcolor=lightblue, label="Explain the steps involved in creating a chatbot", shape=rect, style=filled];
+99 [class=intent, fillcolor=lightblue, label="How to collect data for a project?", shape=rect, style=filled];
+100 [class=intent, fillcolor=lightblue, label="What are the steps for building a classification project?", shape=rect, style=filled];
+101 [class=intent, fillcolor=lightblue, label="Tell me more about building a regression project", shape=rect, style=filled];
+102 [class=intent, fillcolor=lightblue, label="What is the procedure for learning web development?", shape=rect, style=filled];
+103 [class=intent, fillcolor=lightblue, label="Can you explain the process of becoming a data analyst?", shape=rect, style=filled];
+104 [class=intent, fillcolor=lightblue, label="I'm curious about becoming a software engineer, can you help?", shape=rect, style=filled];
+105 [class=intent, fillcolor=lightblue, label="How to become a Business Intelligence engineer?", shape=rect, style=filled];
+106 [class=intent, fillcolor=lightblue, label="How to become a full-stack developer?", shape=rect, style=filled];
+107 [class=intent, fillcolor=lightblue, label=hi, shape=rect, style=filled];
+108 [class=intent, fillcolor=lightblue, label="I'm curious about becoming a front-end developer, can you help?", shape=rect, style=filled];
+109 [class=intent, fillcolor=lightblue, label="How do I start a career as a back-end developer?", shape=rect, style=filled];
+110 [class=intent, fillcolor=lightblue, label="Tell me more about learning about blockchain", shape=rect, style=filled];
+111 [class=intent, fillcolor=lightblue, label="What do you understand by blockchain?", shape=rect, style=filled];
+112 [class=intent, fillcolor=lightblue, label="What does IoT mean?", shape=rect, style=filled];
+113 [class=intent, fillcolor=lightblue, label="What's the meaning of crypto?", shape=rect, style=filled];
+114 [class=intent, fillcolor=lightblue, label="What do you understand by NFTs?", shape=rect, style=filled];
+115 [class=intent, fillcolor=lightblue, label="What is cybersecurity?", shape=rect, style=filled];
+116 [class=intent, fillcolor=lightblue, label="What are the benefits of big data?", shape=rect, style=filled];
+117 [class=intent, fillcolor=lightblue, label="How do ionic bonds differ from covalent bonds in terms of electron sharing?", shape=rect, style=filled];
+118 [class=intent, fillcolor=lightblue, label="What are the defining characteristics of scalar and vector quantities?", shape=rect, style=filled];
+119 [class=intent, fillcolor=lightblue, label="Can you explain Newton's first law of motion?", shape=rect, style=filled];
+120 [class=intent, fillcolor=lightblue, label="What is the relationship between force, mass, and acceleration according to Newton's second law of motion?", shape=rect, style=filled];
+121 [class=intent, fillcolor=lightblue, label="What does Newton's third law of motion state?", shape=rect, style=filled];
+122 [class=intent, fillcolor=lightblue, label="What is the difference between kinetic and potential energy?", shape=rect, style=filled];
+123 [class=intent, fillcolor=lightblue, label="Can you explain how energy is conserved in mechanical systems?", shape=rect, style=filled];
+124 [class=intent, fillcolor=lightblue, label="What are the defining characteristics of static and kinetic friction?", shape=rect, style=filled];
+125 [class=intent, fillcolor=lightblue, label="What are the effects of gravity on the motion of objects in free fall?", shape=rect, style=filled];
+126 [class=intent, fillcolor=lightblue, label="What are the defining characteristics of elastic and inelastic collisions?", shape=rect, style=filled];
+127 [class=intent, fillcolor=lightblue, label="What is the significance of the conservation of momentum in collisions?", shape=rect, style=filled];
+128 [class=intent, fillcolor=lightblue, label="What is the difference between heat and temperature?", shape=rect, style=filled];
+129 [class=intent, fillcolor=lightblue, label="How do nuclear fission and nuclear fusion differ in terms of atomic reactions?", shape=rect, style=filled];
+130 [class=intent, fillcolor=lightblue, label="Let's explore the mysteries of the universe", shape=rect, style=filled];
+131 [class=intent, fillcolor=lightblue, label="What is the nature of time?", shape=rect, style=filled];
+132 [class=intent, fillcolor=lightblue, label="Can we discuss fantasy literature or movies?", shape=rect, style=filled];
+133 [class=intent, fillcolor=lightblue, label="Can we discuss the influence of mythology on modern fantasy?", shape=rect, style=filled];
+134 [class=intent, fillcolor=lightblue, label="What is the mechanism of covalent bonding between atoms?", shape=rect, style=filled];
+135 [class=intent, fillcolor=lightblue, label="What is the nature of truth?", shape=rect, style=filled];
+136 [class=intent, fillcolor=lightblue, label="Explain natural language processing", shape=rect, style=filled];
+137 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+138 [class=intent, fillcolor=lightblue, label="don't like that", shape=rect, style=filled];
+139 [class=intent, fillcolor=lightblue, label=no, shape=rect, style=filled];
+140 [class=intent, fillcolor=lightblue, label="I am going to save the world", shape=rect, style=filled];
+141 [class=intent, fillcolor=lightblue, label="extremly sad", shape=rect, style=filled];
+142 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+143 [class=intent, fillcolor=lightblue, label="not really", shape=rect, style=filled];
+144 [class=intent, fillcolor=lightblue, label="have a nice day", shape=rect, style=filled];
+145 [class=intent, fillcolor=lightblue, label="are you a human?", shape=rect, style=filled];
+0 -> 75  [class="", key=NONE, label=""];
+0 -> 79  [class="", key=0];
+0 -> 80  [class="", key=0];
+0 -> 81  [class="", key=0];
+0 -> 82  [class="", key=0];
+0 -> 83  [class="", key=0];
+0 -> 84  [class="", key=0];
+0 -> 85  [class="", key=0];
+0 -> 86  [class="", key=0];
+0 -> 87  [class="", key=0];
+0 -> 88  [class="", key=0];
+0 -> 89  [class="", key=0];
+0 -> 90  [class="", key=0];
+0 -> 91  [class="", key=0];
+0 -> 92  [class="", key=0];
+0 -> 93  [class="", key=0];
+0 -> 94  [class="", key=0];
+0 -> 95  [class="", key=0];
+0 -> 96  [class="", key=0];
+0 -> 97  [class="", key=0];
+0 -> 98  [class="", key=0];
+0 -> 99  [class="", key=0];
+0 -> 100  [class="", key=0];
+0 -> 101  [class="", key=0];
+0 -> 102  [class="", key=0];
+0 -> 103  [class="", key=0];
+0 -> 104  [class="", key=0];
+0 -> 105  [class="", key=0];
+0 -> 106  [class="", key=0];
+0 -> 107  [class="", key=0];
+0 -> 108  [class="", key=0];
+0 -> 109  [class="", key=0];
+0 -> 110  [class="", key=0];
+0 -> 111  [class="", key=0];
+0 -> 112  [class="", key=0];
+0 -> 113  [class="", key=0];
+0 -> 114  [class="", key=0];
+0 -> 115  [class="", key=0];
+0 -> 116  [class="", key=0];
+0 -> 117  [class="", key=0];
+0 -> 118  [class="", key=0];
+0 -> 119  [class="", key=0];
+0 -> 120  [class="", key=0];
+0 -> 121  [class="", key=0];
+0 -> 122  [class="", key=0];
+0 -> 123  [class="", key=0];
+0 -> 124  [class="", key=0];
+0 -> 125  [class="", key=0];
+0 -> 126  [class="", key=0];
+0 -> 127  [class="", key=0];
+0 -> 128  [class="", key=0];
+0 -> 129  [class="", key=0];
+0 -> 130  [class="", key=0];
+0 -> 131  [class="", key=0];
+0 -> 132  [class="", key=0];
+0 -> 133  [class="", key=0];
+0 -> 134  [class="", key=0];
+0 -> 135  [class="", key=0];
+0 -> 136  [class="", key=0];
+1 -> 2  [class="", key=NONE, label=""];
+2 -> 137  [class="", key=0];
+2 -> 138  [class="", key=0];
+3 -> "-1"  [class="", key=NONE, label=""];
+4 -> 5  [class="", key=NONE, label=""];
+5 -> 139  [class="", key=0];
+6 -> "-1"  [class="", key=NONE, label=""];
+7 -> "-1"  [class="", key=NONE, label=""];
+8 -> "-1"  [class="", key=NONE, label=""];
+9 -> "-1"  [class="", key=NONE, label=""];
+10 -> "-1"  [class="", key=NONE, label=""];
+11 -> "-1"  [class="", key=NONE, label=""];
+12 -> "-1"  [class="", key=NONE, label=""];
+13 -> "-1"  [class="", key=NONE, label=""];
+14 -> "-1"  [class="", key=NONE, label=""];
+15 -> "-1"  [class="", key=NONE, label=""];
+16 -> "-1"  [class="", key=NONE, label=""];
+17 -> "-1"  [class="", key=NONE, label=""];
+18 -> "-1"  [class="", key=NONE, label=""];
+19 -> "-1"  [class="", key=NONE, label=""];
+20 -> "-1"  [class="", key=NONE, label=""];
+21 -> "-1"  [class="", key=NONE, label=""];
+22 -> "-1"  [class="", key=NONE, label=""];
+23 -> "-1"  [class="", key=NONE, label=""];
+24 -> "-1"  [class="", key=NONE, label=""];
+25 -> "-1"  [class="", key=NONE, label=""];
+26 -> "-1"  [class="", key=NONE, label=""];
+27 -> "-1"  [class="", key=NONE, label=""];
+28 -> "-1"  [class="", key=NONE, label=""];
+29 -> "-1"  [class="", key=NONE, label=""];
+30 -> "-1"  [class="", key=NONE, label=""];
+31 -> "-1"  [class="", key=NONE, label=""];
+32 -> "-1"  [class="", key=NONE, label=""];
+33 -> 140  [class="", key=0];
+33 -> 141  [class="", key=0];
+34 -> "-1"  [class="", key=NONE, label=""];
+35 -> "-1"  [class="", key=NONE, label=""];
+36 -> "-1"  [class="", key=NONE, label=""];
+37 -> "-1"  [class="", key=NONE, label=""];
+38 -> "-1"  [class="", key=NONE, label=""];
+39 -> "-1"  [class="", key=NONE, label=""];
+40 -> "-1"  [class="", key=NONE, label=""];
+41 -> "-1"  [class="", key=NONE, label=""];
+42 -> "-1"  [class="", key=NONE, label=""];
+43 -> "-1"  [class="", key=NONE, label=""];
+44 -> "-1"  [class="", key=NONE, label=""];
+46 -> 47  [class="", key=NONE, label=""];
+47 -> 142  [class="", key=0];
+47 -> 143  [class="", key=0];
+49 -> "-1"  [class="", key=NONE, label=""];
+50 -> "-1"  [class="", key=NONE, label=""];
+51 -> "-1"  [class="", key=NONE, label=""];
+52 -> "-1"  [class="", key=NONE, label=""];
+53 -> "-1"  [class="", key=NONE, label=""];
+54 -> "-1"  [class="", key=NONE, label=""];
+55 -> "-1"  [class="", key=NONE, label=""];
+56 -> "-1"  [class="", key=NONE, label=""];
+57 -> "-1"  [class="", key=NONE, label=""];
+58 -> "-1"  [class="", key=NONE, label=""];
+62 -> "-1"  [class="", key=NONE, label=""];
+63 -> "-1"  [class="", key=NONE, label=""];
+64 -> "-1"  [class="", key=NONE, label=""];
+65 -> "-1"  [class="", key=NONE, label=""];
+66 -> "-1"  [class="", key=NONE, label=""];
+67 -> "-1"  [class="", key=NONE, label=""];
+68 -> "-1"  [class="", key=NONE, label=""];
+69 -> "-1"  [class="", key=NONE, label=""];
+70 -> "-1"  [class="", key=NONE, label=""];
+71 -> "-1"  [class="", key=NONE, label=""];
+75 -> 144  [class="", key=0];
+75 -> 145  [class="", key=0];
+78 -> "-1"  [class="", key=NONE, label=""];
+79 -> 1  [class="", key=0];
+80 -> 4  [class="", key=0];
+81 -> 7  [class="", key=0];
+82 -> 8  [class="", key=0];
+83 -> 9  [class="", key=0];
+84 -> 10  [class="", key=0];
+85 -> 11  [class="", key=0];
+86 -> 12  [class="", key=0];
+87 -> 13  [class="", key=0];
+88 -> 14  [class="", key=0];
+89 -> 15  [class="", key=0];
+90 -> 16  [class="", key=0];
+91 -> 17  [class="", key=0];
+92 -> 18  [class="", key=0];
+93 -> 19  [class="", key=0];
+94 -> 20  [class="", key=0];
+95 -> 21  [class="", key=0];
+96 -> 22  [class="", key=0];
+97 -> 23  [class="", key=0];
+98 -> 24  [class="", key=0];
+99 -> 25  [class="", key=0];
+100 -> 26  [class="", key=0];
+101 -> 27  [class="", key=0];
+102 -> 28  [class="", key=0];
+103 -> 29  [class="", key=0];
+104 -> 30  [class="", key=0];
+105 -> 31  [class="", key=0];
+106 -> 32  [class="", key=0];
+107 -> 33  [class="", key=0];
+108 -> 35  [class="", key=0];
+109 -> 36  [class="", key=0];
+110 -> 37  [class="", key=0];
+111 -> 38  [class="", key=0];
+112 -> 39  [class="", key=0];
+113 -> 40  [class="", key=0];
+114 -> 41  [class="", key=0];
+115 -> 42  [class="", key=0];
+116 -> 43  [class="", key=0];
+117 -> 44  [class="", key=0];
+118 -> 49  [class="", key=0];
+119 -> 50  [class="", key=0];
+120 -> 51  [class="", key=0];
+121 -> 52  [class="", key=0];
+122 -> 53  [class="", key=0];
+123 -> 54  [class="", key=0];
+124 -> 55  [class="", key=0];
+125 -> 56  [class="", key=0];
+126 -> 57  [class="", key=0];
+127 -> 58  [class="", key=0];
+128 -> 63  [class="", key=0];
+129 -> 64  [class="", key=0];
+130 -> 65  [class="", key=0];
+131 -> 66  [class="", key=0];
+132 -> 67  [class="", key=0];
+133 -> 68  [class="", key=0];
+134 -> 69  [class="", key=0];
+135 -> 70  [class="", key=0];
+136 -> 71  [class="", key=0];
+137 -> 3  [class="", key=0];
+138 -> 6  [class="", key=0];
+139 -> 6  [class="", key=0];
+140 -> 34  [class="", key=0];
+141 -> 46  [class="", key=0];
+142 -> 34  [class="", key=0];
+143 -> 62  [class="", key=0];
+144 -> 62  [class="", key=0];
+145 -> 78  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>

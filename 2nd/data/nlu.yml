@@ -1,0 +1,812 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: unanswerable_question
+  examples: |
+    - What is the meaning of existence?
+    - Can you explain the concept of infinity?
+    - Can you predict the future?
+    - Why do we dream?
+    - Can you solve the mind-body problem?
+    - What is consciousness?
+    - Is time travel possible?
+    - Why is there something rather than nothing?
+    - What is the nature of reality?
+    - Do aliens exist?
+    - What is the origin of the universe?
+    - Is there a multiverse?
+    - Can we ever know everything?
+    - What is the ultimate fate of the universe?
+    - Do we have free will?
+    - What is the nature of morality?
+    - What is the nature of truth?
+    - Are there other dimensions?
+    - What is the nature of love?
+    - Can we achieve true happiness?
+    - What is the nature of beauty?
+    - What is the origin of consciousness?
+    - What is the nature of time?
+    - What is the meaning of suffering?
+    - What is the purpose of emotions?
+
+- intent: nlp_definition
+  examples: |
+    - What is NLP?
+    - Can you explain NLP?
+    - Define NLP
+    - What does NLP stand for?
+    - Explain natural language processing
+    - What exactly is natural language processing?
+    - Could you tell me about NLP?
+    - I'm curious, what is NLP?
+    - Tell me more about NLP
+    - What's the meaning of NLP?
+    - Could you provide an overview of NLP?
+    - How would you define NLP?
+    - Can you give me a brief explanation of NLP?
+    - I'd like to know about NLP, can you help?
+    - What do you understand by NLP?
+
+- intent: computer_engineering_cycle_modules
+  examples: |
+    - What are the modules of Computer Engineering Cycle in FSTE?
+    - List the courses offered in Computer Engineering Cycle at FSTE
+    - Can you provide information about the modules of Computer Engineering Cycle?
+    - Computer Engineering Cycle at FSTE
+
+- intent: computer_science_engineering_complex_systems_modules
+  examples: |
+    - What are the modules of Computer Science and Engineering of Complex Systems?
+    - List the courses offered in Computer Science and Engineering of Complex Systems
+    - Can you provide information about the modules of Computer Science and Engineering of Complex Systems?
+    - Computer Science and Engineering of Complex Systems
+
+- intent: machine_learning_definition
+  examples: |
+    - What is machine learning?
+    - Can you explain machine learning?
+    - Define machine learning
+    - What does machine learning stand for?
+    - Explain machine learning
+    - What exactly is machine learning?
+    - Could you tell me about machine learning?
+    - I'm curious, what is machine learning?
+    - Tell me more about machine learning
+    - What's the meaning of machine learning?
+    - Could you provide an overview of machine learning?
+    - How would you define machine learning?
+    - Can you give me a brief explanation of machine learning?
+    - I'd like to know about machine learning, can you help?
+    - What do you understand by machine learning?
+
+- intent: deep_learning_definition
+  examples: |
+    - What is deep learning?
+    - Can you explain deep learning?
+    - Define deep learning
+    - What does deep learning stand for?
+    - Explain deep learning
+    - What exactly is deep learning?
+    - Could you tell me about deep learning?
+    - I'm curious, what is deep learning?
+    - Tell me more about deep learning
+    - What's the meaning of deep learning?
+    - Could you provide an overview of deep learning?
+    - How would you define deep learning?
+    - Can you give me a brief explanation of deep learning?
+    - I'd like to know about deep learning, can you help?
+    - What do you understand by deep learning?
+
+- intent: neural_network_definition
+  examples: |
+    - What is a neural network?
+    - Can you explain neural network?
+    - Define neural network
+    - What does neural network stand for?
+    - Explain neural network
+    - What exactly is neural network?
+    - Could you tell me about neural network?
+    - I'm curious, what is neural network?
+    - Tell me more about neural network
+    - What's the meaning of neural network?
+    - Could you provide an overview of neural network?
+    - How would you define neural network?
+    - Can you give me a brief explanation of neural network?
+    - I'd like to know about neural network, can you help?
+    - What do you understand by neural network?
+
+- intent: ai_definition
+  examples: |
+    - what's AI
+    - What is artificial intelligence?
+    - Can you explain artificial intelligence?
+    - Define artificial intelligence
+    - What does artificial intelligence stand for?
+    - Explain artificial intelligence
+    - What exactly is artificial intelligence?
+    - Could you tell me about artificial intelligence?
+    - I'm curious, what is artificial intelligence?
+    - Tell me more about artificial intelligence
+    - What's the meaning of artificial intelligence?
+    - Could you provide an overview of artificial intelligence?
+    - How would you define artificial intelligence?
+    - Can you give me a brief explanation of artificial intelligence?
+    - I'd like to know about artificial intelligence, can you help?
+    - What do you understand by artificial intelligence?
+
+- intent: gpt_definition
+  examples: |
+    - What is GPT?
+    - Can you explain GPT?
+    - Define GPT
+    - What does GPT stand for?
+    - Explain GPT
+    - What exactly is GPT?
+    - Could you tell me about GPT?
+    - I'm curious, what is GPT?
+    - Tell me more about GPT
+    - What's the meaning of GPT?
+    - Could you provide an overview of GPT?
+    - How would you define GPT?
+    - Can you give me a brief explanation of GPT?
+    - I'd like to know about GPT, can you help?
+    - What do you understand by GPT?
+
+- intent: first_law_of_thermodynamics
+  examples: |
+    - How does the first law of thermodynamics relate to the conservation of energy?
+    - What is the connection between the first law of thermodynamics and energy conservation?
+    - Can you explain how the first law of thermodynamics reflects the conservation of energy?
+    - What does the first law of thermodynamics state?
+
+- intent: conductors_vs_insulators_in_heat_transfer
+  examples: |
+    - What is the difference between conductors and insulators in terms of heat transfer?
+    - Can you explain the distinction between conductors and insulators in heat conduction?
+    - How do conductors and insulators differ in their ability to transfer heat?
+    - What are the defining characteristics of conductors and insulators in heat transfer?
+
+- intent: second_law_of_thermodynamics
+  examples: |
+    - How does the second law of thermodynamics define the direction of heat flow?
+    - What is the principle behind the second law of thermodynamics in heat transfer?
+    - Can you explain how the second law of thermodynamics governs heat flow?
+    - What does the second law of thermodynamics state about heat transfer?
+
+
+- intent: underfitting_definition
+  examples: |
+    - What is underfitting?
+    - Can you explain underfitting?
+    - Define underfitting
+    - What does underfitting mean?
+    - Explain underfitting
+    - What exactly is underfitting?
+    - Could you tell me about underfitting?
+    - I'm curious, what is underfitting?
+    - Tell me more about underfitting
+    - What's the meaning of underfitting?
+    - Could you provide an overview of underfitting?
+    - How would you define underfitting?
+    - Can you give me a brief explanation of underfitting?
+    - I'd like to know about underfitting, can you help?
+    - What do you understand by underfitting?
+
+
+- intent: overfitting_definition
+  examples: |
+    - What is overfitting?
+    - Can you explain overfitting?
+    - Define overfitting
+    - What does overfitting mean?
+    - Explain overfitting
+    - What exactly is overfitting?
+    - Could you tell me about overfitting?
+    - I'm curious, what is overfitting?
+    - Tell me more about overfitting
+    - What's the meaning of overfitting?
+    - Could you provide an overview of overfitting?
+    - How would you define overfitting?
+    - Can you give me a brief explanation of overfitting?
+    - I'd like to know about overfitting, can you help?
+    - What do you understand by overfitting?
+
+
+- intent: supervised_learning_definition
+  examples: |
+    - What is supervised learning?
+    - Can you explain supervised learning?
+    - Define supervised learning
+    - What does supervised learning mean?
+    - Explain supervised learning
+    - What exactly is supervised learning?
+    - Could you tell me about supervised learning?
+    - I'm curious, what is supervised learning?
+    - Tell me more about supervised learning
+    - What's the meaning of supervised learning?
+    - Could you provide an overview of supervised learning?
+    - How would you define supervised learning?
+    - Can you give me a brief explanation of supervised learning?
+    - I'd like to know about supervised learning, can you help?
+    - What do you understand by supervised learning?
+
+
+- intent: unsupervised_learning_definition
+  examples: |
+    - What is unsupervised learning?
+    - Can you explain unsupervised learning?
+    - Define unsupervised learning
+    - What does unsupervised learning mean?
+    - Explain unsupervised learning
+    - What exactly is unsupervised learning?
+    - Could you tell me about unsupervised learning?
+    - I'm curious, what is unsupervised learning?
+    - Tell me more about unsupervised learning
+    - What's the meaning of unsupervised learning?
+    - Could you provide an overview of unsupervised learning?
+    - How would you define unsupervised learning?
+    - Can you give me a brief explanation of unsupervised learning?
+    - I'd like to know about unsupervised learning, can you help?
+    - What do you understand by unsupervised learning?
+
+
+- intent: reinforcement_learning_definition
+  examples: |
+    - What is reinforcement learning?
+    - Can you explain reinforcement learning?
+    - Define reinforcement learning
+    - What does reinforcement learning mean?
+    - Explain reinforcement learning
+    - What exactly is reinforcement learning?
+    - Could you tell me about reinforcement learning?
+    - I'm curious, what is reinforcement learning?
+    - Tell me more about reinforcement learning
+    - What's the meaning of reinforcement learning?
+    - Could you provide an overview of reinforcement learning?
+    - How would you define reinforcement learning?
+    - Can you give me a brief explanation of reinforcement learning?
+    - I'd like to know about reinforcement learning, can you help?
+    - What do you understand by reinforcement learning?
+
+
+
+- intent: image_data_augmentation
+  examples: |
+    - How can I augment image data?
+    - What are some techniques for augmenting image data?
+    - Can you explain image data augmentation?
+    - Define image data augmentation
+    - What does image data augmentation mean?
+    - Explain image data augmentation
+    - What exactly is image data augmentation?
+    - Could you tell me about image data augmentation?
+    - I'm curious, what is image data augmentation?
+    - Tell me more about image data augmentation
+    - What's the meaning of image data augmentation?
+    - Could you provide an overview of image data augmentation?
+    - How would you define image data augmentation?
+    - Can you give me a brief explanation of image data augmentation?
+    - I'd like to know about image data augmentation, can you help?
+    - What do you understand by image data augmentation?
+
+
+- intent: tensorflow_definition
+  examples: |
+    - What is TensorFlow?
+    - Can you explain TensorFlow?
+    - Define TensorFlow
+    - What does TensorFlow stand for?
+    - Explain TensorFlow
+    - What exactly is TensorFlow?
+    - Could you tell me about TensorFlow?
+    - I'm curious, what is TensorFlow?
+    - Tell me more about TensorFlow
+    - What's the meaning of TensorFlow?
+    - Could you provide an overview of TensorFlow?
+    - How would you define TensorFlow?
+    - Can you give me a brief explanation of TensorFlow?
+    - I'd like to know about TensorFlow, can you help?
+    - What do you understand by TensorFlow?
+
+
+- intent: pytorch_definition
+  examples: |
+    - What is PyTorch?
+    - Can you explain PyTorch?
+    - Define PyTorch
+    - What does PyTorch stand for?
+    - Explain PyTorch
+    - What exactly is PyTorch?
+    - Could you tell me about PyTorch?
+    - I'm curious, what is PyTorch?
+    - Tell me more about PyTorch
+    - What's the meaning of PyTorch?
+    - Could you provide an overview of PyTorch?
+    - How would you define PyTorch?
+    - Can you give me a brief explanation of PyTorch?
+    - I'd like to know about PyTorch, can you help?
+    - What do you understand by PyTorch?
+
+
+- intent: spacy_definition
+  examples: |
+    - What is spaCy?
+    - Can you explain spaCy?
+    - Define spaCy
+    - What does spaCy stand for?
+    - Explain spaCy
+    - What exactly is spaCy?
+    - Could you tell me about spaCy?
+    - I'm curious, what is spaCy?
+    - Tell me more about spaCy
+    - What's the meaning of spaCy?
+    - Could you provide an overview of spaCy?
+    - How would you define spaCy?
+    - Can you give me a brief explanation of spaCy?
+    - I'd like to know about spaCy, can you help?
+    - What do you understand by spaCy?
+
+
+- intent: chatbot_building_steps
+  examples: |
+    - What are the steps to build a chatbot?
+    - Can you explain the process of building a chatbot?
+    - How do I build a chatbot?
+    - What are the main sintentes of chatbot development?
+    - Explain the steps involved in creating a chatbot
+    - What is the procedure for building a chatbot?
+    - I'm curious about building a chatbot, can you help?
+    - Tell me more about the process of building a chatbot
+
+
+- intent: data_collection_steps
+  examples: |
+    - How to collect data for a project?
+    - What are the steps for data collection?
+    - Can you explain the process of collecting data?
+    - How do I gather data for my project?
+    - What is the procedure for data collection?
+    - I'm curious about data collection methods, can you help?
+    - Tell me more about collecting data for a project
+
+
+- intent: classification_project_steps
+  examples: |
+    - How to build a classification project?
+    - What are the steps for building a classification project?
+    - Can you explain the process of building a classification project?
+    - How do I start a classification project?
+    - What is the procedure for building a classification project?
+    - I'm curious about building a classification project, can you help?
+    - Tell me more about building a classification project
+
+- intent: regression_project_steps
+  examples: |
+    - How to build a regression project?
+    - What are the steps for building a regression project?
+    - Can you explain the process of building a regression project?
+    - How do I start a regression project?
+    - What is the procedure for building a regression project?
+    - I'm curious about building a regression project, can you help?
+    - Tell me more about building a regression project
+
+
+- intent: web_development_steps
+  examples: |
+    - How to start with web development?
+    - What are the steps for learning web development?
+    - Can you explain the process of becoming a web developer?
+    - How do I begin my journey in web development?
+    - What is the procedure for learning web development?
+    - I'm curious about web development, can you help?
+    - Tell me more about becoming a web developer
+
+
+- intent: data_analyst_steps
+  examples: |
+    - How to become a data analyst?
+    - What are the steps for becoming a data analyst?
+    - Can you explain the process of becoming a data analyst?
+    - How do I start a career as a data analyst?
+    - What is the procedure for becoming a data analyst?
+    - I'm curious about becoming a data analyst, can you help?
+    - Tell me more about becoming a data analyst
+
+
+- intent: software_engineer_steps
+  examples: |
+    - How to become a software engineer?
+    - What are the steps for becoming a software engineer?
+    - Can you explain the process of becoming a software engineer?
+    - How do I start a career as a software engineer?
+    - What is the procedure for becoming a software engineer?
+    - I'm curious about becoming a software engineer, can you help?
+    - Tell me more about becoming a software engineer
+
+
+- intent: business_intelligence_engineer_steps
+  examples: |
+    - How to become a Business Intelligence engineer?
+    - What are the steps for becoming a Business Intelligence engineer?
+    - Can you explain the process of becoming a Business Intelligence engineer?
+    - How do I start a career as a Business Intelligence engineer?
+    - What is the procedure for becoming a Business Intelligence engineer?
+    - I'm curious about becoming a Business Intelligence engineer, can you help?
+    - Tell me more about becoming a Business Intelligence engineer
+
+
+- intent: full_stack_developer_steps
+  examples: |
+    - How to become a full-stack developer?
+    - What are the steps for becoming a full-stack developer?
+    - Can you explain the process of becoming a full-stack developer?
+    - How do I start a career as a full-stack developer?
+    - What is the procedure for becoming a full-stack developer?
+    - I'm curious about becoming a full-stack developer, can you help?
+    - Tell me more about becoming a full-stack developer
+
+
+- intent: front_end_developer_steps
+  examples: |
+    - How to become a front-end developer?
+    - What are the steps for becoming a front-end developer?
+    - Can you explain the process of becoming a front-end developer?
+    - How do I start a career as a front-end developer?
+    - What is the procedure for becoming a front-end developer?
+    - I'm curious about becoming a front-end developer, can you help?
+    - Tell me more about becoming a front-end developer
+
+
+- intent: back_end_developer_steps
+  examples: |
+    - How to become a back-end developer?
+    - What are the steps for becoming a back-end developer?
+    - Can you explain the process of becoming a back-end developer?
+    - How do I start a career as a back-end developer?
+    - What is the procedure for becoming a back-end developer?
+    - I'm curious about becoming a back-end developer, can you help?
+    - Tell me more about becoming a back-end developer
+
+
+- intent: blockchain_learning_steps
+  examples: |
+    - How to learn about blockchain?
+    - What are the steps for learning blockchain?
+    - Can you explain the process of learning about blockchain?
+    - How do I start learning about blockchain?
+    - What is the procedure for learning blockchain?
+    - I'm curious about blockchain, can you help?
+    - Tell me more about learning about blockchain
+
+
+- intent: blockchain_definition
+  examples: |
+    - What is blockchain?
+    - Can you explain blockchain?
+    - Define blockchain
+    - What does blockchain mean?
+    - Explain blockchain
+    - What exactly is blockchain?
+    - Could you tell me about blockchain?
+    - I'm curious, what is blockchain?
+    - Tell me more about blockchain
+    - What's the meaning of blockchain?
+    - Could you provide an overview of blockchain?
+    - How would you define blockchain?
+    - Can you give me a brief explanation of blockchain?
+    - I'd like to know about blockchain, can you help?
+    - What do you understand by blockchain?
+
+
+- intent: iot_definition
+  examples: |
+    - What is IoT?
+    - Can you explain IoT?
+    - Define IoT
+    - What does IoT mean?
+    - Explain IoT
+    - What exactly is IoT?
+    - Could you tell me about IoT?
+    - I'm curious, what is IoT?
+    - Tell me more about IoT
+    - What's the meaning of IoT?
+    - Could you provide an overview of IoT?
+    - How would you define IoT?
+    - Can you give me a brief explanation of IoT?
+    - I'd like to know about IoT, can you help?
+    - What do you understand by IoT?
+
+- intent: crypto_definition
+  examples: |
+    - What is crypto?
+    - Can you explain crypto?
+    - Define crypto
+    - What does crypto mean?
+    - Explain crypto
+    - What exactly is crypto?
+    - Could you tell me about crypto?
+    - I'm curious, what is crypto?
+    - Tell me more about crypto
+    - What's the meaning of crypto?
+    - Could you provide an overview of crypto?
+    - How would you define crypto?
+    - Can you give me a brief explanation of crypto?
+    - I'd like to know about crypto, can you help?
+    - What do you understand by crypto?
+
+
+- intent: nft_definition
+  examples: |
+    - What are NFTs?
+    - Can you explain NFTs?
+    - Define NFTs
+    - What does NFT mean?
+    - Explain NFTs
+    - What exactly are NFTs?
+    - Could you tell me about NFTs?
+    - I'm curious, what are NFTs?
+    - Tell me more about NFTs
+    - What's the meaning of NFTs?
+    - Could you provide an overview of NFTs?
+    - How would you define NFTs?
+    - Can you give me a brief explanation of NFTs?
+    - I'd like to know about NFTs, can you help?
+    - What do you understand by NFTs?
+
+
+- intent: cybersecurity_basics
+  examples: |
+    - What is cybersecurity?
+    - What does cybersecurity mean?
+    - Explain cybersecurity
+    - Why is cybersecurity important?
+    - What are some cybersecurity threats?
+    - How can I protect myself from cyber attacks?
+    - What are some best practices for cybersecurity?
+
+
+- intent: big_data
+  examples: "- What is big data?\n- How is big data used?\n- What are the benefits of big data?\n- What are some challenges associated with big data?\n- How does big data impact businesses? \n#magic___^_^___line\n#magic___^_^___line\n"
+
+- intent: ionic_vs_covalent_bond
+  examples: |
+    - What is the difference between an ionic bond and a covalent bond?
+    - Can you explain the distinction between ionic and covalent bonds?
+    - How do ionic bonds differ from covalent bonds in terms of electron sharing?
+    - What are the defining characteristics of ionic and covalent bonds?
+
+
+- intent: scalar_vs_vector_quantities
+  examples: |
+    - What is the difference between scalar and vector quantities?
+    - Can you explain the distinction between scalar and vector quantities?
+    - How do scalar and vector quantities differ in physics?
+    - What are the defining characteristics of scalar and vector quantities?
+
+
+- intent: newtons_first_law_of_motion
+  examples: |
+    - How does Newton's first law of motion describe the behavior of objects?
+    - What is the principle behind Newton's first law of motion?
+    - Can you explain Newton's first law of motion?
+    - What does Newton's first law of motion state?
+
+
+- intent: newtons_second_law_of_motion
+  examples: |
+    - What is the relationship between force, mass, and acceleration according to Newton's second law of motion?
+    - How does Newton's second law of motion define the interaction between force, mass, and acceleration?
+    - Can you explain Newton's second law of motion?
+    - What does Newton's second law of motion state?
+
+
+- intent: newtons_third_law_of_motion
+  examples: |
+    - How does Newton's third law of motion explain action and reaction forces?
+    - What is the principle behind Newton's third law of motion?
+    - Can you explain Newton's third law of motion?
+    - What does Newton's third law of motion state?
+
+
+- intent: kinetic_vs_potential_energy
+  examples: |
+    - What is the difference between kinetic and potential energy?
+    - Can you explain the distinction between kinetic and potential energy?
+    - How do kinetic and potential energy differ in physics?
+    - What are the defining characteristics of kinetic and potential energy?
+
+
+- intent: conservation_of_energy_in_mechanical_systems
+  examples: |
+    - How does the conservation of energy apply to mechanical systems?
+    - What is the principle behind the conservation of energy in mechanical systems?
+    - Can you explain how energy is conserved in mechanical systems?
+    - What does the conservation of energy state in the context of mechanical systems?
+
+
+- intent: static_vs_kinetic_friction
+  examples: |
+    - What is the difference between static and kinetic friction?
+    - Can you explain the distinction between static and kinetic friction?
+    - How do static and kinetic friction differ in their effects on motion?
+    - What are the defining characteristics of static and kinetic friction?
+
+
+- intent: gravity_and_free_fall
+  examples: |
+    - How does gravity affect the motion of objects in free fall?
+    - Can you explain the role of gravity in free fall?
+    - What is the influence of gravity on objects falling freely?
+    - What are the effects of gravity on the motion of objects in free fall?
+
+
+- intent: elastic_vs_inelastic_collisions
+  examples: |
+    - What is the difference between elastic and inelastic collisions?
+    - Can you explain the distinction between elastic and inelastic collisions?
+    - How do elastic and inelastic collisions differ in terms of kinetic energy conservation?
+    - What are the defining characteristics of elastic and inelastic collisions?
+
+
+- intent: conservation_of_momentum_in_collisions
+  examples: |
+    - How does the principle of conservation of momentum apply to collisions?
+    - Can you explain how momentum is conserved in collisions?
+    - What is the significance of the conservation of momentum in collisions?
+    - What does the conservation of momentum state in the context of collisions?
+
+
+- intent: heat_vs_temperature
+  examples: |
+    - What is the difference between heat and temperature?
+    - Can you explain the distinction between heat and temperature?
+    - How do heat and temperature differ in physics?
+    - What are the defining characteristics of heat and temperature?
+
+- intent: nuclear_fission_vs_nuclear_fusion
+  examples: |
+    - What is the difference between nuclear fission and nuclear fusion?
+    - Can you explain the distinction between nuclear fission and nuclear fusion?
+    - How do nuclear fission and nuclear fusion differ in terms of atomic reactions?
+    - What are the defining characteristics of nuclear fission and nuclear fusion?
+
+
+- intent: lost_in_thought
+  examples: |
+    - I'm feeling contemplative
+    - Can we delve into deep topics?
+    - Let's explore the mysteries of the universe
+    - I'm in a philosophical mood
+
+
+- intent: lost_in_thought_questions
+  examples: |
+    - What is the nature of reality?
+    - What is consciousness?
+    - Do we have free will?
+    - What is the meaning of life according to different philosophies?
+    - Is there a God?
+    - What is the purpose of emotions?
+    - Can you predict the future?
+    - What happens after we die?
+    - Why do we dream?
+    - What is the nature of time?
+
+
+- intent: dreamland_escapade
+  examples: |
+    - Take me on a journey to fantastical realms
+    - I crave an escape to imaginary worlds
+    - Let's explore fictional universes
+    - Can we discuss fantasy literature or movies?
+
+
+- intent: dreamland_escapade_questions
+  examples: |
+    - What are the key elements of world-building in fantasy literature?
+    - How do fantasy authors create compelling characters?
+    - What is the role of magic in fantasy worlds?
+    - Can you analyze the symbolism in a popular fantasy series?
+    - What are some common tropes in fantasy storytelling?
+    - How does fantasy literature reflect real-world issues?
+    - What makes a fantasy world immersive and believable?
+    - Can we discuss the influence of mythology on modern fantasy?
+    - What are the different subgenres of fantasy literature?
+    - How do fantasy stories explore themes of heroism and villainy?
+
+
+- intent: covalent_bonding
+  examples: |
+    - How are elements bonded in a covalent bond?
+    - Can you explain the formation of covalent bonds?
+    - What is the mechanism of covalent bonding between atoms?
+    - What are the characteristics of covalent bonds?
